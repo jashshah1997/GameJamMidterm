@@ -104,6 +104,10 @@ public class MovementComponent : MonoBehaviour
         playerController.isRunning = value.isPressed;
         playerAnimator.SetBool(isRunningHash, playerController.isRunning);
     }
+    public void OnPause(InputValue value)
+    {
+        GameManager.instance.PauseGame("Game Paused", false);
+    }
 
     public void OnJump(InputValue value)
     {
