@@ -16,6 +16,7 @@ public class MovementComponent : MonoBehaviour
     Rigidbody rigidbody;
     Animator playerAnimator;
     public GameObject followTransform;
+    public AudioSource m_kick_sound;
 
     Vector2 inputVector = Vector2.zero;
     Vector3 moveDirection = Vector3.zero;
@@ -34,6 +35,7 @@ public class MovementComponent : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         playerController = GetComponent<PlayerController>();
         rigidbody = GetComponent<Rigidbody>();
+        m_kick_sound = GetComponent<AudioSource>();
     }
     // Start is called before the first frame update
     void Start()
@@ -160,9 +162,9 @@ public class MovementComponent : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Ball")
+        if (other.gameObject.CompareTag("Ball"))
         {
-            Debug.Log("hekkers");
+            m_kick_sound.Play();
             other.gameObject.GetComponent<Rigidbody>().AddExplosionForce(80f, gameObject.transform.position, 10);
         }
     }
