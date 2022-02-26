@@ -45,7 +45,7 @@ public class MovementComponent : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         followTransform.transform.rotation *= Quaternion.AngleAxis(lookInput.x * aimSensitivity, Vector3.up);
         followTransform.transform.rotation *= Quaternion.AngleAxis(lookInput.y * aimSensitivity, Vector3.left);
@@ -85,7 +85,9 @@ public class MovementComponent : MonoBehaviour
         float currentSpeed = playerController.isRunning ? runSpeed : walkSpeed;
 
         Vector3 movementDirection = moveDirection * (currentSpeed * Time.deltaTime);
-        transform.position += movementDirection;
+        
+        if (!playerController.isJumping)
+            transform.position += movementDirection;
     }
 
     public void OnMovement(InputValue value)
