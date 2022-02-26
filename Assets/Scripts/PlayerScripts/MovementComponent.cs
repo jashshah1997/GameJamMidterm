@@ -62,7 +62,7 @@ public class MovementComponent : MonoBehaviour
         float aimAngle = followTransform.transform.localEulerAngles.x;
         aimAngle = (aimAngle > 180) ? aimAngle - 360 : aimAngle;
         float val = (aimAngle + offsetToZero) / (range);
-        print(val);
+        
         playerAnimator.SetFloat(verticalAimHash, val);
 
         if (angle > 180 && angle < 300)
@@ -156,5 +156,14 @@ public class MovementComponent : MonoBehaviour
             playerAnimator.SetBool(isJumpingHash, false);
         }
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Ball")
+        {
+            Debug.Log("hekkers");
+            other.gameObject.GetComponent<Rigidbody>().AddExplosionForce(80f, gameObject.transform.position, 10);
+        }
     }
 }
