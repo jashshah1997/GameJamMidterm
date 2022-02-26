@@ -349,12 +349,11 @@ PrefabInstance:
       value: 'Move camera with the mouse button.
 
         Move player using W/A/S/D.
+        Hold shift to run. Pause the game by pressing P.
 
-        Pause
-        the game by pressing P.
 
-        Avoid the obstacles and kick the ball throught
-        the goal before you run out of space!'
+        Avoid the obstacles
+        and kick the ball throught the goal before you run out of space!'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6c95bf438e545b48816e3c7e98aa87d, type: 3}
